@@ -1,0 +1,17 @@
+{% extends '@Storefront/storefront/component/product/card/badges.html.twig' %}
+
+{% set outOfStock = product.stock == 0 and product.restockTime > 0 and product.isCloseOut is false %}
+
+{% block component_product_badges %}
+    {% if outOfStock %}
+    <div class="product-badges">
+        {% block component_product_badges_come_back_soon %}
+            <div>
+                <span class="badge bg-warning ">{{ 'listing.boxLabelComingBackSoon'|trans|sw_sanitize }}</span>
+            </div>
+        {% endblock %}
+    </div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

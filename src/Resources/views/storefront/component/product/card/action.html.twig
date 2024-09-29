@@ -1,0 +1,11 @@
+{% extends '@Storefront/storefront/component/product/card/action.html.twig' %}
+
+{% set outOfStock = product.stock == 0 and product.restockTime > 0 and product.isCloseOut is false %}
+
+{% block component_product_box_action_inner %}
+    {% if outOfStock %}
+
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
