@@ -1,0 +1,16 @@
+{% extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+
+{% set buyable = config('MUtils.config.productRestock') %}
+
+{% block buy_widget_buy_form_inner %}
+
+    {% if buyable %}
+        {% if product.stock == 0 and product.restockTime > 0 and product.isCloseOut is false %}
+{#        Die Kaufknöpfe sollen bewusst überschrieben werden damit Produkte die nicht auflager sind, nicht bestellt werden können.#}
+        {% else %}
+            {{ parent() }}
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

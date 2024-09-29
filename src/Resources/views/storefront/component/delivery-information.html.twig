@@ -1,0 +1,21 @@
+{% extends '@Storefront/storefront/component/delivery-information.html.twig' %}
+
+{% set buyable = config('MUtils.config.productRestock') %}
+
+{% block component_delivery_information %}
+    {% if buyable %}
+        {% if product.stock == 0 and product.restockTime > 0 and product.isCloseOut is false %}
+            {% block component_delivery_information_out_of_stock %}
+                <link itemprop="availability" href="http://schema.org/LimitedAvailability">
+                <p class="delivery-information delivery-restock">
+                    <span class="delivery-status-indicator bg-warning"></span>
+                    {{ 'detail.productAvailableSoon'|trans|sw_sanitize }}
+                </p>
+            {% endblock %}
+        {% else %}
+            {{ parent() }}
+        {% endif %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

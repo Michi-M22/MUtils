@@ -1,0 +1,32 @@
+{
+    "name": "m-utils/m-utils",
+    "description": "m-utils/m-utils",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michi"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "MUtils\\MUtils",
+        "label": {
+            "de-DE": "Michi's Utils für Shopware 6",
+            "en-GB": "Michi's Utils for Shopware 6"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "MUtils\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MUtils\\Tests\\": "tests/"
+        }
+    }
+}
